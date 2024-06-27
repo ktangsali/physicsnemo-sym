@@ -23,18 +23,116 @@ import csv
 from stl import mesh as np_mesh
 from sympy import Symbol
 
-try:
-    import pysdf.sdf as pysdf
-except:
-    print(
-        "Error importing pysdf. Make sure 'libsdf.so' is in LD_LIBRARY_PATH and pysdf is installed"
-    )
-    raise
+#try:
+#    import pysdf.sdf as pysdf
+#except:
+#    print(
+#        "Error importing pysdf. Make sure 'libsdf.so' is in LD_LIBRARY_PATH and pysdf is installed"
+#    )
+#    raise
 
 from .geometry import Geometry
 from .parameterization import Parameterization, Bounds, Parameter
 from .curve import Curve
 from modulus.sym.constants import diff_str
+
+import warp as wp
+
+@wp.func
+def count_intersections(mesh: wp.uint64,
+                        p0: wp.vec3f,
+                        n: wp.vec3f,
+                        max_t: wp.float32):
+
+    count = wp.int32(0)
+    t_cumulative = wp.float32(0.0)
+    while True:
+        res = wp.mesh_query_ray(mesh, p0, n, max_t)
+        if res.result:
+            count += 1
+            t_cumulative += res.t
+            p0 += (res.t+0.0001) * n
+            if count > 500:
+                break
+        else:
+            break
+
+    return count
+
+
+@wp.kernel
+def bvh_query_distance(mesh: wp.uint64,
+                       points: wp.array(dtype=wp.vec3f),
+                       max_dist: wp.float32,
+                       sdf: wp.array(dtype=wp.float32),
+                       sdf_hit_point: wp.array(dtype=wp.vec3f),
+                       sdf_hit_point_id: wp.array(dtype=wp.int32)):
+    tid = wp.tid()
+
+    res = wp.mesh_query_point(mesh, points[tid], max_dist)
+    # res = wp.mesh_query_point_sign_winding_number(mesh, points[tid], max_dist)
+
+    mesh_ = wp.mesh_get(mesh)
+
+    p0 = mesh_.points[mesh_.indices[3*res.face + 0]]
+    p1 = mesh_.points[mesh_.indices[3*res.face + 1]]
+    p2 = mesh_.points[mesh_.indices[3*res.face + 2]]
+
+    p_closest = res.u*p0 + res.v*p1 + (1.0-res.u-res.v)*p2
+
+    # sign_avg = wp.float32(0.0)
+    # for i in range(21):
+    #     rnd = wp.rand_init(42)
+    #     n = wp.sample_unit_sphere_surface(rnd)
+    #     count = count_intersections(mesh, points[tid], n, max_dist)
+    #     if count % 2 == 0:
+    #         sign_avg += 1.0
+    #     else:
+    #         sign_avg -= 1.0
+
+    # sign = wp.float32(1.0)
+    # if sign_avg < 0:
+    #     sign = -1.0
+
+    # if res.sign != sign:
+    #     wp.printf("WARNING: sign doesn't match: %f vs %f!\n", res.sign, sign_avg)
+    # sdf[tid] = sign * wp.abs(wp.length(points[tid] - p_closest))
+
+    # Built-in sign works very well
+    sdf[tid] = res.sign * wp.abs(wp.length(points[tid] - p_closest))
+    sdf_hit_point[tid] = p_closest
+    sdf_hit_point_id[tid] = res.face
+
+
+
+
+def signed_distance_field(mesh_vertices,
+                          mesh_indices,
+                          input_points,
+                          max_dist=1e8,
+                          include_hit_points=False,
+                          include_hit_points_id=False
+                          ):
+    wp.init()
+    mesh = wp.Mesh(wp.array(mesh_vertices, dtype=wp.vec3), wp.array(mesh_indices, dtype=wp.int32))
+    # mesh = wp.Mesh(wp.array(mesh_vertices, dtype=wp.vec3), wp.array(mesh_indices, dtype=wp.int32), support_winding_number=True)
+    sdf_points = wp.array(input_points, dtype=wp.vec3)
+    sdf = wp.zeros(shape=sdf_points.shape, dtype=wp.float32)
+    sdf_hit_point = wp.zeros(shape=sdf_points.shape, dtype=wp.vec3f)
+    sdf_hit_point_id = wp.zeros(shape=sdf_points.shape, dtype=wp.int32)
+    wp.launch(kernel=bvh_query_distance, dim=len(sdf_points), inputs=[mesh.id,sdf_points,max_dist,sdf,sdf_hit_point,sdf_hit_point_id])
+
+    if include_hit_points and include_hit_points_id:
+        return (sdf, sdf_hit_point, sdf_hit_point_id)
+    elif include_hit_points:
+        return (sdf, sdf_hit_point)
+    elif include_hit_points_id:
+        return (sdf, sdf_hit_point_id)
+    else:
+        return sdf
+
+
+
 
 
 class Tessellation(Geometry):
@@ -144,10 +242,15 @@ class Tessellation(Geometry):
 
                 # compute sdf values
                 outputs = {}
+                #print(points.shape, triangles.shape)
                 if airtight:
-                    sdf_field, sdf_derivative = pysdf.signed_distance_field(
-                        store_triangles, points, include_hit_points=True
+                    sdf_field, sdf_derivative = signed_distance_field(
+                        store_triangles, np.arange(store_triangles.shape[0]), points, include_hit_points=True
                     )
+                    sdf_field = sdf_field.numpy()
+                    sdf_derivative = sdf_derivative.numpy().reshape(-1)
+                    #print(sdf_field.shape, sdf_derivative.shape)
+                    #print(type(sdf_field), type(sdf_derivative))
                     sdf_field = -np.expand_dims(max_dis * sdf_field, axis=1)
                 else:
                     sdf_field = np.zeros_like(invar["x"])
