@@ -233,7 +233,8 @@ class Tessellation(Geometry):
                 store_triangles[:, :, 1] -= miny
                 store_triangles[:, :, 2] -= minz
                 store_triangles *= 1 / max_dis
-                store_triangles = store_triangles.flatten()
+                #print("Hello!", store_triangles.shape)
+                store_triangles = store_triangles.reshape(-1, 3)
                 points[:, 0] -= minx
                 points[:, 1] -= miny
                 points[:, 2] -= minz
@@ -245,13 +246,16 @@ class Tessellation(Geometry):
                 #print(points.shape, triangles.shape)
                 if airtight:
                     sdf_field, sdf_derivative = signed_distance_field(
-                        store_triangles, np.arange(store_triangles.shape[0]), points, include_hit_points=True
+                        store_triangles, np.arange((store_triangles.shape[0])), points, include_hit_points=True
                     )
                     sdf_field = sdf_field.numpy()
                     sdf_derivative = sdf_derivative.numpy().reshape(-1)
+                    #sdf_derivative = sdf_derivative.numpy()
                     #print(sdf_field.shape, sdf_derivative.shape)
                     #print(type(sdf_field), type(sdf_derivative))
+                    
                     sdf_field = -np.expand_dims(max_dis * sdf_field, axis=1)
+                    #sdf_field = -np.expand_dims(sdf_field, axis=1)
                 else:
                     sdf_field = np.zeros_like(invar["x"])
                 outputs["sdf"] = sdf_field
