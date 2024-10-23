@@ -23,7 +23,7 @@ from modulus.sym.eq.derivatives import gradient_autodiff
 from modulus.sym.eq.fd import grads as fd_grads
 from modulus.sym.eq.ls import grads as ls_grads
 from modulus.sym.eq.mfd import grads as mfd_grads
-
+import time
 
 def compute_stencil2d(coords, model, dx, return_mixed_derivs=False):
     """Compute 2D stencil required for MFD"""
@@ -137,11 +137,18 @@ def compute_connectivity_tensor(nodes, edges):
         same neighbors by finding the max neighbors and adding (0, 0) for points with
         fewer neighbors.
     """
-    edge_list = []
-    for i in range(edges.size(0)):
-        node1, node2 = edges[i][0].item(), edges[i][1].item()
-        edge_list.append(tuple(sorted((node1, node2))))
-    unique_edges = set(edge_list)
+    unique_edges, _ = torch.sort(edges, dim=1)
+    unique_edges = torch.unique(unique_edges, dim=0)
+
+    unique_edges_flat = unique_edges.flatten()
+    counts = torch.bincount(unique_edges_flat)
+    most_frequent_node = torch.argmax(counts)
+    max_connectivity = (unique_edges == most_frequent_node).any(dim=1).sum().item()
+    
+    unique_edges_as_tuples = [tuple(row) for row in unique_edges.cpu().numpy()]
+    unique_edges = set(unique_edges_as_tuples)
+    
+    #start_time = time.time()
     node_edges = {node.item(): [] for node in nodes}
     for edge in unique_edges:
         node1, node2 = edge
@@ -149,26 +156,25 @@ def compute_connectivity_tensor(nodes, edges):
             node_edges[node1].append((node1, node2))
         if node2 in node_edges:
             node_edges[node2].append((node2, node1))
-    max_connectivity = []
-    for k, v in node_edges.items():
-        max_connectivity.append(len(v))
-    max_connectivity = np.array(max_connectivity).max()
+    
+    #print(f"node edges: {time.time() - start_time}")
+
+    #start_time = time.time()
     for k, v in node_edges.items():
         if len(v) < max_connectivity:
             empty_list = [(0, 0) for _ in range(max_connectivity - len(v))]
             v = v + empty_list
             node_edges[k] = torch.tensor(v)
-        elif len(v) > max_connectivity:
-            v = v[0:max_connectivity]
-            node_edges[k] = torch.tensor(v)
         else:
             node_edges[k] = torch.tensor(v)
+    #print(f"equalizing node edges: {time.time() - start_time}")
+    
     connectivity_tensor = (
         torch.stack([v for v in node_edges.values()], dim=0)
         .to(torch.long)
         .to(nodes.device)
     )
-
+    
     return connectivity_tensor
 
 
