@@ -144,10 +144,10 @@ def compute_connectivity_tensor(nodes, edges):
     counts = torch.bincount(unique_edges_flat)
     most_frequent_node = torch.argmax(counts)
     max_connectivity = (unique_edges == most_frequent_node).any(dim=1).sum().item()
-    
+
     unique_edges_as_tuples = [tuple(row) for row in unique_edges.cpu().numpy()]
     unique_edges = set(unique_edges_as_tuples)
-    
+
     #start_time = time.time()
     node_edges = {node.item(): [] for node in nodes}
     for edge in unique_edges:
@@ -156,19 +156,20 @@ def compute_connectivity_tensor(nodes, edges):
             node_edges[node1].append((node1, node2))
         if node2 in node_edges:
             node_edges[node2].append((node2, node1))
-    
+
     #print(f"node edges: {time.time() - start_time}")
 
     #start_time = time.time()
     for k, v in node_edges.items():
         if len(v) < max_connectivity:
-            empty_list = [(0, 0) for _ in range(max_connectivity - len(v))]
+            #empty_list = [(0, 0) for _ in range(max_connectivity - len(v))]
+            empty_list = [(0, 0)] * (max_connectivity - len(v))
             v = v + empty_list
             node_edges[k] = torch.tensor(v)
         else:
             node_edges[k] = torch.tensor(v)
     #print(f"equalizing node edges: {time.time() - start_time}")
-    
+
     connectivity_tensor = (
         torch.stack([v for v in node_edges.values()], dim=0)
         .to(torch.long)
