@@ -25,6 +25,7 @@ from modulus.sym.eq.ls import grads as ls_grads
 from modulus.sym.eq.mfd import grads as mfd_grads
 import time
 
+
 def compute_stencil2d(coords, model, dx, return_mixed_derivs=False):
     """Compute 2D stencil required for MFD"""
     # compute stencil points
@@ -137,8 +138,7 @@ def compute_connectivity_tensor(nodes, edges):
         same neighbors by finding the max neighbors and adding (0, 0) for points with
         fewer neighbors.
     """
-    unique_edges, _ = torch.sort(edges, dim=1)
-    unique_edges = torch.unique(unique_edges, dim=0)
+    unique_edges = torch.unique(edges, dim=0)
 
     unique_edges_flat = unique_edges.flatten()
     counts = torch.bincount(unique_edges_flat)
@@ -148,34 +148,23 @@ def compute_connectivity_tensor(nodes, edges):
     unique_edges_as_tuples = [tuple(row) for row in unique_edges.cpu().numpy()]
     unique_edges = set(unique_edges_as_tuples)
 
-    #start_time = time.time()
     node_edges = {node.item(): [] for node in nodes}
     for edge in unique_edges:
         node1, node2 = edge
-        if node1 in node_edges:
-            node_edges[node1].append((node1, node2))
-        if node2 in node_edges:
-            node_edges[node2].append((node2, node1))
+        node_edges[node1].append((node1, node2))
+        node_edges[node2].append((node2, node1))
 
-    #print(f"node edges: {time.time() - start_time}")
-
-    #start_time = time.time()
     for k, v in node_edges.items():
         if len(v) < max_connectivity:
-            #empty_list = [(0, 0) for _ in range(max_connectivity - len(v))]
-            empty_list = [(0, 0)] * (max_connectivity - len(v))
-            v = v + empty_list
-            node_edges[k] = torch.tensor(v)
-        else:
-            node_edges[k] = torch.tensor(v)
-    #print(f"equalizing node edges: {time.time() - start_time}")
+            v.extend([(0, 0)] * (max_connectivity - len(v)))
+        node_edges[k] = torch.tensor(v)
 
     connectivity_tensor = (
         torch.stack([v for v in node_edges.values()], dim=0)
         .to(torch.long)
         .to(nodes.device)
     )
-    
+
     return connectivity_tensor
 
 
