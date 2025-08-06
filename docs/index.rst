@@ -1,8 +1,5 @@
-********************************************
-NVIDIA PhysicsNeMo Sym (Latest Release)
-********************************************
-..
-   TODO: add conf.py and root_doc
+PhysicsNeMo Sym
+===============
 
 NVIDIA PhysicsNeMo Sym is a deep learning framework that blends the power of 
 physics and partial differential equations (PDEs) with AI to build more 
@@ -30,94 +27,14 @@ you jumpstart your development of AI driven models.
 
 .. toctree::
    :maxdepth: 2
-   :caption: Learn the Basics
-   :name: Learn the Basics
-   :hidden:
+   :caption: Contents
+   :name: Contents
 
-   Overview <user_guide/basics/physicsnemo_overview.rst>
-   Introductory Example <user_guide/basics/lid_driven_cavity_flow.rst>
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Theory
-   :name: Theory
-   :hidden:
-
-   Physics-Informed Learning <user_guide/theory/phys_informed.rst>
-   Architectures <user_guide/theory/architectures.rst>
-   Advanced Schemes <user_guide/theory/advanced_schemes.rst>
-   Recommended Practices <user_guide/theory/recommended_practices.rst>
-   Miscellaneous Concepts <user_guide/theory/miscellaneous.rst>
-
-.. toctree::
-   :maxdepth: 1
-   :caption: PhysicsNeMo Sym Features
-   :name: PhysicsNeMo Sym Features
-   :hidden:
-   
-   Geometry and Tesselation Modules <user_guide/features/csg_and_tessellated_module.rst>
-   Computational Graph, Nodes and Architectures <user_guide/features/nodes.rst> 
-   Constraints <user_guide/features/constraints.rst>
-   Configuration <user_guide/features/configuration.rst>
-   Post Processing <user_guide/features/post_processing.rst>
-   Performance <user_guide/features/performance.rst>
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Physics-Informed Foundations
-   :name: Physics-Informed Foundations
-   :hidden:
- 
-   1D Wave Equation <user_guide/foundational/1d_wave_equation.rst>
-   2D Wave Equation <user_guide/foundational/2d_wave_equation.rst>
-   Spring Mass ODE <user_guide/foundational/ode_spring_mass.rst>
-   Zero Equation Turbulence <user_guide/foundational/zero_eq_turbulence.rst>
-   Scalar Transport <user_guide/foundational/scalar_transport.rst>
-   Linear Elasticity <user_guide/foundational/linear_elasticity.rst>
-   Inverse Problem <user_guide/foundational/inverse_problem.rst>
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Neural Operators
-   :name: Neural Operators
-   :hidden:
- 
-   Fourier <user_guide/neural_operators/darcy_fno.rst>
-   Adaptive Fourier <user_guide/neural_operators/darcy_afno.rst>
-   Physics-Informed <user_guide/neural_operators/darcy_pino.rst>
-   Deep-O Nets <user_guide/neural_operators/deeponet.rst>
-   FourCastNet <user_guide/neural_operators/fourcastnet.rst>
-   
-.. toctree::
-   :maxdepth: 1
-   :caption: Intermediate Case Studies
-   :name: Intermediate Case Studies
-   :hidden:
- 
-   Variational Examples <user_guide/intermediate/variational_example.rst>
-   Geometry from STL Files <user_guide/intermediate/adding_stl_files.rst>
-   Time Window Training <user_guide/intermediate/moving_time_window.rst>
-   Electromagnetics <user_guide/intermediate/em.rst>
-   2D Turbulent Channel <user_guide/intermediate/two_equation_turbulent_channel.rst>
-   Turbulence Super Resolution <user_guide/intermediate/turbulence_super_resolution.rst>
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Advanced Case Studies
-   :name: Advanced Case Studies
-   :hidden:
- 
-   Conjugate Heat Transfer <user_guide/advanced/conjugate_heat_transfer.rst>
-   3D Fin Parameterization <user_guide/advanced/parametrized_simulations.rst>
-   Heat Transfer with High Conductivity <user_guide/advanced/2d_heat_transfer.rst>
-   FPGA <user_guide/advanced/fpga.rst>
-   Industrial Heat Sink <user_guide/advanced/industrial_heat_sink.rst>
-
-
-.. toctree::
-   :maxdepth: 2
-   :caption: PhysicsNeMo Sym API
-   :name: PhysicsNeMo Sym API
-   :hidden:
-   
-   api/api_index
+   basics_index
+   theory_index
+   features_index
+   foundational_index
+   neural_operators_index
+   intermediate_index
+   advanced_index
+   api_index
