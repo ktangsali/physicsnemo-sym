@@ -63,7 +63,7 @@ The figure below shows an overview of how FourCastNet works:
 
 .. _fig-fourcastnet_overview:
 
-.. figure:: /images/user_guide/fourcastnet_overview.png
+.. figure:: ../../images/user_guide/fourcastnet_overview.png
    :alt: Overview of FourCastNet
    :width: 75.0%
    :align: center
@@ -210,7 +210,7 @@ Additionally, a 24 hour forecast is also illustrated comparing the integrated ve
    See the original ArXiv paper or ``src/metrics.py`` for more details on how these metrics are calculated.
    Multiple dataset statistics are needed to properly calculate the metrics of interest.
 
-.. figure:: /images/user_guide/fourcastnet_acc.png
+.. figure:: ../../images/user_guide/fourcastnet_acc.png
    :alt: PhysicsNeMo Sym FourCastNet ACC
    :width: 90.0%
    :align: center
@@ -218,14 +218,14 @@ Additionally, a 24 hour forecast is also illustrated comparing the integrated ve
    Comparison of the anomaly correlation coefficient (ACC) of the predicted 10 meter `u` component wind
    speed (`u10`) and geopotential height (`z500`) using the original FourCastNet model (Original) and the version trained in PhysicsNeMo Sym.
 
-.. figure:: /images/user_guide/fourcastnet_rmse.png
+.. figure:: ../../images/user_guide/fourcastnet_rmse.png
    :alt: PhysicsNeMo Sym FourCastNet RMSE
    :width: 90.0%
    :align: center
 
    Comparison of the predictive root mean square error (RMSE) of each variable between the original FourCastNet model (Original) and the version trained in PhysicsNeMo Sym.
 
-.. figure:: /images/user_guide/fourcastnet_tcwv.png
+.. figure:: ../../images/user_guide/fourcastnet_tcwv.png
    :alt: PhysicsNeMo Sym FourCastNet TCWV
    :width: 50.0%
    :align: center

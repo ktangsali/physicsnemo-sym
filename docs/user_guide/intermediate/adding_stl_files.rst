@@ -14,7 +14,7 @@ geometry. In this tutorial you will learn the following:
 #. How to import an STL file in PhysicsNeMo Sym and sample points in the interior
    and on the surface of the geometry.
 
-.. figure:: /images/user_guide/aneurysm.png
+.. figure:: ../../images/user_guide/aneurysm.png
    :alt: Aneurysm STL file
    :width: 40.0%
    :align: center
@@ -149,7 +149,7 @@ to a better resolution.
 
 .. _fig-aneurysm_errors:
 
-.. figure:: /images/user_guide/val_errors.png
+.. figure:: ../../images/user_guide/val_errors.png
    :alt: Convergence plots for different point density
    :width: 100.0%
    :align: center
@@ -167,7 +167,7 @@ successfully captures the flow field inside.
 
 .. _fig-aneurysm-v:
 
-.. figure:: /images/user_guide/aneurysm_v_mag_labelled.png
+.. figure:: ../../images/user_guide/aneurysm_v_mag_labelled.png
    :alt: Cross-sectional view aneurysm showing velocity magnitude. Left: PhysicsNeMo Sym. Center: OpenFOAM. Right: Difference
    :width: 100.0%
    :align: center
@@ -177,7 +177,7 @@ successfully captures the flow field inside.
 
 .. _fig-aneurysm-p:
 
-.. figure:: /images/user_guide/aneurysm_p_labelled.png
+.. figure:: ../../images/user_guide/aneurysm_p_labelled.png
    :alt: Pressure across aneurysm. Left: PhysicsNeMo Sym. Center: OpenFOAM. Right: Difference
    :width: 100.0%
    :align: center
@@ -187,7 +187,7 @@ successfully captures the flow field inside.
 
 .. _fig-aneurysm-stream:
 
-.. figure:: /images/user_guide/aneurysm_streamlines3_crop.png
+.. figure:: ../../images/user_guide/aneurysm_streamlines3_crop.png
    :alt: Flow streamlines inside the aneurysm generated from PhysicsNeMo Sym simulation.
    :width: 50.0%
    :align: center
@@ -220,7 +220,7 @@ intracranial aneurysm models with different sac shapes.
 
 .. _fig-aneurysm_transfer_learning:
 
-.. figure:: /images/user_guide/aneurysm_transfer_learning.png
+.. figure:: ../../images/user_guide/aneurysm_transfer_learning.png
    :alt: Transfer learning accelerates intracranial aneurysm simulations. Results are for two intracranial aneurysms with different sac shapes.
    :width: 70.0%
    :align: center

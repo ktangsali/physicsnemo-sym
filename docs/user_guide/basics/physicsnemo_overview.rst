@@ -74,7 +74,7 @@ More details of each step can be found in the :ref:`Introductory Example` chapte
 
 .. _fig-physicsnemo-dev-loop:
 
-.. figure:: /images/user_guide/physicsnemo_dev_workflow.png
+.. figure:: ../../images/user_guide/physicsnemo_dev_workflow.png
     :alt: PhysicsNeMo Sym' training loop
     :width: 100.0%
     :align: center
@@ -87,7 +87,7 @@ PhysicsNeMo Sym Training Algorithm
 
 .. _fig-physicsnemo-training-loop:
 
-.. figure:: /images/user_guide/physicsnemo_training_loop.png
+.. figure:: ../../images/user_guide/physicsnemo_training_loop.png
     :alt: PhysicsNeMo Sym' training loop
     :width: 100.0%
     :align: center

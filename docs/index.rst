@@ -12,7 +12,7 @@ Based on these aspects, the ML/NN based methodologies can be broadly
 classified into forward (physics-driven), data-driven and hybrid approaches 
 that involve both the physics and data assimilation. 
 
-.. figure:: /images/user_guide/ai_in_computational_sciences_spectrum.png
+.. figure:: images/user_guide/ai_in_computational_sciences_spectrum.png
    :alt: AI in computational sciences
    :width: 80.0%
    :align: center
