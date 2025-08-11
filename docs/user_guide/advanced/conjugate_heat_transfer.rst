@@ -312,7 +312,7 @@ visualize such quantities in PhysicsNeMo Sym by outputting the :math:`x`,
 
 You can then post-process these quantities based on your choice to
 visualize the desired variables. `Paraview’s Calculator Filter
-<https://kitware.github.io/paraview-docs/latest/python/paraview.simple.Calculator.html>`_ was used for the 
+<https://www.paraview.org/paraview-docs/nightly/python/paraview.simple.Calculator.html>`_ was used for the 
 plot shown below. The wall velocity gradients comparison between OpenFOAM and PhysicsNeMo Sym is
 shown in :numref:`fig-3d_heat_sink_wall_velGrad`.
 

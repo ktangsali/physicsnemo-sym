@@ -76,7 +76,7 @@ peak wavelet frequency of :math:`f_0=15 Hz`.
    Ricker source signature
 
 The problem uses wavefield data at time steps (150 :math:`ms` - 300
-:math:`ms`) generated from finite difference simulations, using `Devito <https://github.com/devitocodes/devito/tree/master../../../examples/seismic/tutorials>`_, as constraints for the temporal boundary conditions, and train
+:math:`ms`) generated from finite difference simulations, using `Devito <https://github.com/devitocodes/devito/tree/main/examples/seismic>`_, as constraints for the temporal boundary conditions, and train
 PhysicsNeMo Sym to produce wavefields at later time steps (300 :math:`ms` – 1000
 :math:`ms`).
 

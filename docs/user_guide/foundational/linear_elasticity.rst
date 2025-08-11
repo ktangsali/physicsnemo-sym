@@ -159,7 +159,7 @@ Problem 1: Deflection of a bracket
 
 This linear elasticity example, shows a 3D bracket 
 in :numref:`fig-bracket-geometry`. This example is partially
-adopted from the `MATLAB PDE toolbox <https://www.mathworks.com/help/pde/ug/deflection-analysis-of-a-bracket.html>`_.
+adopted from the `MATLAB PDE toolbox <https://www.mathworks.com/help/pde/ug/deflection-analysis-of-bracket-femodel.html>`_.
 The back face of this bracket is clamped, and a traction of
 :math:`4 \times 10^4 \, \text{Pa}` is applied to the front face in the
 negative-:math:`z` direction (this face is shown in red). The rest of
