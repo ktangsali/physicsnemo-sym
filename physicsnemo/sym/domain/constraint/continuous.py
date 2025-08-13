@@ -172,7 +172,7 @@ class PointwiseConstraint(Constraint):
             Dictionary of numpy arrays to pointwise weight losses.
             Default is ones.
         loss : Loss
-            PhysicsNeMo `Loss` module that defines the loss type, (e.g. L2, L1, ...).
+            PhysicsNeMo Loss module that defines the loss type, (e.g. L2, L1, ...).
         shuffle : bool, optional
             Randomly shuffle examples in dataset every epoch, by default True
         drop_last : bool, optional
@@ -254,7 +254,7 @@ class PointwiseBoundaryConstraint(PointwiseConstraint):
     num_workers : int
         Number of worker used in fetching data.
     loss : Loss
-        PhysicsNeMo `Loss` module that defines the loss type, (e.g. L2, L1, ...).
+        PhysicsNeMo Loss module that defines the loss type, (e.g. L2, L1, ...).
     shuffle : bool, optional
         Randomly shuffle examples in dataset every epoch, by default True
     """
@@ -366,7 +366,7 @@ class PointwiseInteriorConstraint(PointwiseConstraint):
     nodes : List[Node]
         List of PhysicsNeMo Nodes to unroll graph with.
     geometry : Geometry
-        PhysicsNeMo `Geometry` to apply the constraint with.
+        PhysicsNeMo Geometry to apply the constraint with.
     outvar : Dict[str, Union[int, float, sp.Basic]]
         A dictionary of SymPy Symbols/Expr, floats or int.
         This is used to describe the constraint. For example,
@@ -406,7 +406,7 @@ class PointwiseInteriorConstraint(PointwiseConstraint):
     num_workers : int
         Number of worker used in fetching data.
     loss : Loss
-        PhysicsNeMo `Loss` module that defines the loss type, (e.g. L2, L1, ...).
+        PhysicsNeMo Loss module that defines the loss type, (e.g. L2, L1, ...).
     shuffle : bool, optional
         Randomly shuffle examples in dataset every epoch, by default True
     """
@@ -658,7 +658,7 @@ class IntegralBoundaryConstraint(IntegralConstraint):
     num_workers : int
         Number of worker used in fetching data.
     loss : Loss
-        PhysicsNeMo `Loss` module that defines the loss type, (e.g. L2, L1, ...).
+        PhysicsNeMo Loss module that defines the loss type, (e.g. L2, L1, ...).
     shuffle : bool, optional
         Randomly shuffle examples in dataset every epoch, by default True
     """
@@ -1086,7 +1086,7 @@ class DeepONetConstraint(PointwiseConstraint):
             Dictionary of numpy arrays to pointwise weight losses.
             Default is ones.
         loss : Loss
-            PhysicsNeMo `Loss` module that defines the loss type, (e.g. L2, L1, ...).
+            PhysicsNeMo Loss module that defines the loss type, (e.g. L2, L1, ...).
         shuffle : bool, optional
             Randomly shuffle examples in dataset every epoch, by default True
         drop_last : bool, optional

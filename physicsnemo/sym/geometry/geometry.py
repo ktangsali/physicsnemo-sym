@@ -445,6 +445,7 @@ class Geometry:
         points : Dict[str, np.ndarray]
             Dictionary contain a point cloud sampled uniformly.
             For example in 2D it would be
+            
             ```
             points = {'x': np.ndarray (N, 1),
                       'y': np.ndarray (N, 1),
@@ -452,6 +453,7 @@ class Geometry:
                       'normal_y': np.ndarray (N, 1),
                       'area': np.ndarray (N, 1)}
             ```
+            
             The `area` value can be used for Monte Carlo integration
             like the following,
             `total_area = np.sum(points['area'])`
@@ -558,12 +560,14 @@ class Geometry:
         points : Dict[str, np.ndarray]
             Dictionary contain a point cloud sampled uniformly.
             For example in 2D it would be
+            
             ```
             points = {'x': np.ndarray (N, 1),
                       'y': np.ndarray (N, 1),
                       'sdf': np.ndarray (N, 1),
                       'area': np.ndarray (N, 1)}
             ```
+            
             The `area` value can be used for Monte Carlo integration
             like the following,
             `total_area = np.sum(points['area'])`

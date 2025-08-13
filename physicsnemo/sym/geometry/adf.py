@@ -47,9 +47,9 @@ class ADF(torch.nn.Module):
         Parameters
         ----------
         omegas : List[torch.Tensor]
-          List of ADFs used to compute the R-equivalence.
-        m: float
-          Normalization order
+            List of ADFs used to compute the R-equivalence.
+        m : float
+            Normalization order
 
         Returns
         -------
@@ -73,12 +73,12 @@ class ADF(torch.nn.Module):
 
         Parameters
         ----------
-        bases: List[torch.Tensor]
-          List of ADFs used for the transfinite interpolation.
-        indx: int
-          index of the interpolation basis
-        eps: float
-          Small value to avoid division by zero
+        bases : List[torch.Tensor]
+            List of ADFs used for the transfinite interpolation.
+        indx : int
+            index of the interpolation basis
+        eps : float
+            Small value to avoid division by zero
 
         Returns
         -------
@@ -104,12 +104,12 @@ class ADF(torch.nn.Module):
 
         Parameters
         ----------
-        points: Tuple[torch.Tensor]
-          ADF will be computed on these points
-        point_1: Tuple[float]
-          One of the two points that form the infinite line
-        point_2: Tuple[float]
-          One of the two points that form the infinite line
+        points : Tuple[torch.Tensor]
+            ADF will be computed on these points
+        point_1 : Tuple[float]
+            One of the two points that form the infinite line
+        point_2 : Tuple[float]
+            One of the two points that form the infinite line
 
         Returns
         -------

@@ -32,7 +32,7 @@ class LinearElasticity(PDE):
         The Young's modulus
     nu : float, Sympy Symbol/Expr, str
         The Poisson's ratio
-    lambda_: float, Sympy Symbol/Expr, str
+    lambda_ : float, Sympy Symbol/Expr, str
         Lamé's first parameter
     mu: float, Sympy Symbol/Expr, str
         Lamé's second parameter (shear modulus)
