@@ -446,17 +446,16 @@ class Geometry:
             Dictionary contain a point cloud sampled uniformly.
             For example in 2D it would be
             
-            ```
-            points = {'x': np.ndarray (N, 1),
-                      'y': np.ndarray (N, 1),
-                      'normal_x': np.ndarray (N, 1),
-                      'normal_y': np.ndarray (N, 1),
-                      'area': np.ndarray (N, 1)}
-            ```
+            .. code-block:: python
             
-            The `area` value can be used for Monte Carlo integration
-            like the following,
-            `total_area = np.sum(points['area'])`
+                points = {'x': np.ndarray (N, 1),
+                          'y': np.ndarray (N, 1),
+                          'normal_x': np.ndarray (N, 1),
+                          'normal_y': np.ndarray (N, 1),
+                          'area': np.ndarray (N, 1)}
+            
+            The ``area`` value can be used for Monte Carlo integration
+            like the following, ``total_area = np.sum(points['area'])``
         """
 
         # compile criteria from sympy if needed
@@ -561,16 +560,16 @@ class Geometry:
             Dictionary contain a point cloud sampled uniformly.
             For example in 2D it would be
             
-            ```
-            points = {'x': np.ndarray (N, 1),
-                      'y': np.ndarray (N, 1),
-                      'sdf': np.ndarray (N, 1),
-                      'area': np.ndarray (N, 1)}
-            ```
+            .. code-block:: python
             
-            The `area` value can be used for Monte Carlo integration
+                points = {'x': np.ndarray (N, 1),
+                          'y': np.ndarray (N, 1),
+                          'sdf': np.ndarray (N, 1),
+                          'area': np.ndarray (N, 1)}
+            
+            The ``area`` value can be used for Monte Carlo integration
             like the following,
-            `total_area = np.sum(points['area'])`
+            ``total_area = np.sum(points['area'])``
         """
 
         # compile criteria from sympy if needed

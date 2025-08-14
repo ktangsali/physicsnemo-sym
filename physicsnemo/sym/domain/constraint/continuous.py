@@ -219,19 +219,19 @@ class PointwiseBoundaryConstraint(PointwiseConstraint):
     outvar : Dict[str, Union[int, float, sp.Basic]]
         A dictionary of SymPy Symbols/Expr, floats or int.
         This is used to describe the constraint. For example,
-        `outvar={'u': 0}` would specify `'u'` to be zero everywhere
+        ``outvar={'u': 0}`` would specify ``'u'`` to be zero everywhere
         on the constraint.
     batch_size : int
         Batch size used in training.
     criteria : Union[sp.Basic, True]
         SymPy criteria function specifies to only apply constraint to areas
         that satisfy this criteria. For example, if
-        `criteria=sympy.Symbol('x')>0` then only areas that have positive
-        `'x'` values will have the constraint applied to them.
+        ``criteria=sympy.Symbol('x')>0`` then only areas that have positive
+        ``'x'`` values will have the constraint applied to them.
     lambda_weighting :  Dict[str, Union[int, float, sp.Basic]] = None
         The spatial pointwise weighting of the constraint. For example,
-        `lambda_weighting={'lambda_u': 2.0*sympy.Symbol('x')}` would
-        apply a pointwise weighting to the loss of `2.0 * x`.
+        ``lambda_weighting={'lambda_u': 2.0*sympy.Symbol('x')}`` would
+        apply a pointwise weighting to the loss of ``2.0 * x``.
     parameterization : Union[Parameterization, None], optional
         This allows adding parameterization or additional inputs.
     fixed_dataset : bool = True
@@ -247,8 +247,8 @@ class PointwiseBoundaryConstraint(PointwiseConstraint):
         according to Monte Carlo importance sampling,
         https://en.wikipedia.org/wiki/Monte_Carlo_integration.
     batch_per_epoch : int = 1000
-        If `fixed_dataset=True` then the total number of points generated
-        to apply constraint on is `total_nr_points=batch_per_epoch*batch_size`.
+        If ``fixed_dataset=True`` then the total number of points generated
+        to apply constraint on is ``total_nr_points=batch_per_epoch*batch_size``.
     quasirandom : bool = False
         If true then sample the points using the Halton sequence.
     num_workers : int
@@ -370,22 +370,22 @@ class PointwiseInteriorConstraint(PointwiseConstraint):
     outvar : Dict[str, Union[int, float, sp.Basic]]
         A dictionary of SymPy Symbols/Expr, floats or int.
         This is used to describe the constraint. For example,
-        `outvar={'u': 0}` would specify `'u'` to be zero everywhere
+        ``outvar={'u': 0}`` would specify ``'u'`` to be zero everywhere
         in the constraint.
     batch_size : int
         Batch size used in training.
     bounds : Dict[sp.Basic, Tuple[float, float]] = None
         Bounds of the given geometry,
-        (e.g. `bounds={sympy.Symbol('x'): (0, 1), sympy.Symbol('y'): (0, 1)}).
+        (e.g. ``bounds={sympy.Symbol('x'): (0, 1), sympy.Symbol('y'): (0, 1)}``).
     criteria : Union[sp.basic, True]
         SymPy criteria function specifies to only apply constraint to areas
         that satisfy this criteria. For example, if
-        `criteria=sympy.Symbol('x')>0` then only areas that have positive
-        `'x'` values will have the constraint applied to them.
+        ``criteria=sympy.Symbol('x')>0`` then only areas that have positive
+        ``'x'`` values will have the constraint applied to them.
     lambda_weighting :  Dict[str, Union[int, float, sp.Basic]] = None
         The spatial pointwise weighting of the constraint. For example,
-        `lambda_weighting={'lambda_u': 2.0*sympy.Symbol('x')}` would
-        apply a pointwise weighting to the loss of `2.0 * x`.
+        ``lambda_weighting={'lambda_u': 2.0*sympy.Symbol('x')}`` would
+        apply a pointwise weighting to the loss of ``2.0 * x``.
     parameterization: Union[Parameterization, None] = {}
         This allows adding parameterization or additional inputs.
     fixed_dataset : bool = True
@@ -399,8 +399,8 @@ class PointwiseInteriorConstraint(PointwiseConstraint):
         according to Monte Carlo importance sampling,
         https://en.wikipedia.org/wiki/Monte_Carlo_integration.
     batch_per_epoch : int = 1000
-        If `fixed_dataset=True` then the total number of points generated
-        to apply constraint on is `total_nr_points=batch_per_epoch*batch_size`.
+        If ``fixed_dataset=True`` then the total number of points generated
+        to apply constraint on is ``total_nr_points=batch_per_epoch*batch_size``.
     quasirandom : bool = False
         If true then sample the points using the Halton sequence.
     num_workers : int
@@ -628,7 +628,7 @@ class IntegralBoundaryConstraint(IntegralConstraint):
     outvar : Dict[str, Union[int, float, sp.Basic]]
         A dictionary of SymPy Symbols/Expr, floats or int.
         This is used to describe the constraint. For example,
-        `outvar={'u': 0}` would specify the integral of `'u'`
+        ``outvar={'u': 0}`` would specify the integral of ``'u'``
         to be zero.
     batch_size : int
         Number of integrals to apply.
@@ -638,12 +638,12 @@ class IntegralBoundaryConstraint(IntegralConstraint):
     criteria : Union[sp.basic, True]
         SymPy criteria function specifies to only integrate areas
         that satisfy this criteria. For example, if
-        `criteria=sympy.Symbol('x')>0` then only areas that have positive
-        `'x'` values will be integrated.
+        ``criteria=sympy.Symbol('x')>0`` then only areas that have positive
+        ``'x'`` values will be integrated.
     lambda_weighting :  Dict[str, Union[int, float, sp.Basic]] = None
         The weighting of the constraint. For example,
-        `lambda_weighting={'lambda_u': 2.0}` would
-        weight the integral constraint by `2.0`.
+        ``lambda_weighting={'lambda_u': 2.0}`` would
+        weight the integral constraint by ``2.0``.
     parameterization : Union[Parameterization, None]
         This allows adding parameterization or additional inputs.
     fixed_dataset : bool = True
@@ -651,8 +651,8 @@ class IntegralBoundaryConstraint(IntegralConstraint):
         when initialized and fixed. If false then the points are continually
         resampled.
     batch_per_epoch : int = 100
-        If `fixed_dataset=True` then the total number of integrals generated
-        to apply constraint on is `total_nr_integrals=batch_per_epoch*batch_size`.
+        If ``fixed_dataset=True`` then the total number of integrals generated
+        to apply constraint on is ``total_nr_integrals=batch_per_epoch*batch_size``.
     quasirandom : bool = False
         If true then sample the points using the Halton sequence.
     num_workers : int

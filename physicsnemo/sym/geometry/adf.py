@@ -24,6 +24,7 @@ class ADF(torch.nn.Module):
     Used for hard imposition of boundary conditions.
     Currently supports 2d geometries and Dirichlet boundary conditions.
     Contributors: M. A. Nabian, R. Gladstone, H. Meidani, N. Sukumar, A. Srivastava
+    
     Reference: "Sukumar, N. and Srivastava, A., 2021.
         Exact imposition of boundary conditions with distance functions in physics-informed deep neural networks.
         Computer Methods in Applied Mechanics and Engineering, p.114333."
