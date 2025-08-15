@@ -1,6 +1,3 @@
-
-.. _architectures:
-
 Architectures In PhysicsNeMo Sym
 ================================
 

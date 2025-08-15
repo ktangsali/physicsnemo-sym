@@ -727,7 +727,6 @@ large scale differences in the different terms.
 .. [#sukumar2022exact] Sukumar, N., and Ankit Srivastava. "Exact imposition of boundary conditions with distance functions in physics-informed deep neural networks." Computer Methods in Applied Mechanics and Engineering 389 (2022): 114333.
 .. [#son2021sobolev] Son, Hwijae, Jin Woo Jang, Woo Jin Han, and Hyung Ju Hwang. "Sobolev training for the neural network solutions of pdes." arXiv preprint arXiv:2101.08932 (2021).
 .. [#yu2021gradient] Yu, Jeremy, Lu Lu, Xuhui Meng, and George Em Karniadakis. "Gradient-enhanced physics-informed neural networks for forward and inverse PDE problems." arXiv preprint arXiv:2111.02801 (2021).
-.. [#heydari2019softadapt] Heydari, A. Ali, Craig A. Thompson, and Asif Mehmood. "Softadapt: Techniques for adaptive loss weighting of neural networks with multi-part loss functions." arXiv preprint arXiv:1912.12355 (2019).
 .. [#bischof2021multi] Bischof, Rafael, and Michael Kraus. "Multi-objective loss balancing for physics-informed deep learning." arXiv preprint arXiv:2110.09813 (2021).
 .. [#chen2018gradnorm] Chen, Zhao, Vijay Badrinarayanan, Chen-Yu Lee, and Andrew Rabinovich. "Gradnorm: Gradient normalization for adaptive loss balancing in deep multitask networks." In International Conference on Machine Learning, pp. 794-803. PMLR, 2018.
 .. [#wang2022when] Wang, S., Yu, X. and Perdikaris, P., 2022. When and why PINNs fail to train: A neural tangent kernel perspective. Journal of Computational Physics, 449, p.110768.

@@ -25,7 +25,6 @@ Examples using PhysicsNeMo Sym
    user_guide/neural_operators/darcy_afno.rst
    user_guide/neural_operators/darcy_pino.rst
    user_guide/neural_operators/deeponet.rst
-   user_guide/neural_operators/fourcastnet.rst 
 
 .. toctree::
    :maxdepth: 1
