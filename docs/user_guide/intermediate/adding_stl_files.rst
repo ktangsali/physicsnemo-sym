@@ -24,9 +24,7 @@ geometry. In this tutorial you will learn the following:
 .. note::
    This tutorial assumes that you have completed tutorial :ref:`Introductory Example`
    and have familiarized yourself with the basics
-   of the PhysicsNeMo Sym APIs. Additionally, to use the modules
-   described in this tutorial, make sure your system satisfies the
-   requirements for SDF library (:ref:`system_requirements`).
+   of the PhysicsNeMo Sym APIs. 
    
    For the interior sampling to work, ensure that the STL
    geometry is watertight. This requirement is not necessary for sampling

@@ -5,6 +5,13 @@ Examples using PhysicsNeMo Sym
 
 .. toctree::
    :maxdepth: 1
+   :caption: Basics
+   :name: Basics
+
+   user_guide/basics/lid_driven_cavity_flow.rst
+
+.. toctree::
+   :maxdepth: 1
    :caption: Physics-Informed Foundations
    :name: Physics-Informed Foundations
 

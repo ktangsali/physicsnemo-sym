@@ -61,7 +61,7 @@ Case Setup
 
 We first summarize the key concepts
 and how they relate to PhysicsNeMo Sym' features.
-(For a more detailed discussion, please see :ref:`nn_methodology`.)
+(For a more detailed discussion, please see `physics-informed theory <../theory/phys_informed.html>`_.)
 Solving any physics-driven simulation that is defined by
 differential equations requires information about the domain of the
 problem and its governing equations and boundary conditions.
